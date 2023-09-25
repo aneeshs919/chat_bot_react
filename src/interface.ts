@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface  MessageType {
+export interface MessageType {
   responses?: ResponseItem[]
   text?: string
   isBot: boolean
@@ -24,7 +24,7 @@ export interface ChatObj {
 }
 
 export interface HotelDetailsProps {
-  data: HotelDetailsType;
+  data: HotelDetailsType
 }
 
 export interface HotelDetailsType {

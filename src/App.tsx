@@ -1,14 +1,13 @@
+import { useEffect, useState } from 'react'
 import Gallery from '@src/components/gallery'
 import DetailsSection from '@src/components/detailsSection'
 import type { HotelDetailsType } from '@src/interface'
-import { useEffect, useState } from 'react'
 
-const Loader = () => {
-  return 'loading ...'
-}
+const Loader = () => 'loading ...'
 
 const App = () => {
-  const [data, setData] = useState<HotelDetailsType>({})
+  const [data, setData] = useState<HotelDetailsType | null>(null)
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
@@ -19,7 +18,8 @@ const App = () => {
     }
     fetchData()
   }, [])
-  if (!Object.keys(data).length)
+
+  if (!data)
     return (
       <div className='max-w-[1200px] m-auto flex p-10 gap-5'>
         <Loader />
@@ -27,11 +27,11 @@ const App = () => {
     )
 
   return (
-    <div className='max-w-[1200px] m-auto flex p-10 gap-5'>
-      <div className='w-3/5 flex gap-4'>
+    <div className='max-w-[1200px] m-auto flex flex-col lg:flex-row p-4 lg:p-10 gap-5 '>
+      <div className='w-full lg:w-3/5  flex gap-4'>
         <Gallery />
       </div>
-      <div className='w-2/5'>
+      <div className='w-full lg:w-2/5'>
         <DetailsSection data={data as HotelDetailsType} />
       </div>
     </div>

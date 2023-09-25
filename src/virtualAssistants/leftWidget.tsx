@@ -1,12 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom'
-
 import user from '@src/assets/user.png'
 
 const LeftWidget = () => {
   const navigate = useNavigate()
-  const matches = useParams();
+  const matches = useParams()
   return (
-    <div className='bg-[#ced8da] w-[30%] p-8 flex flex-col justify-between'>
+    <div className='bg-[#ced8da] w-[30%] hidden lg:flex p-8  flex-col justify-between'>
       <div className='flex flex-col gap-10'>
         <div className='text-2xl flex justify-between items-center'>
           Bonnie

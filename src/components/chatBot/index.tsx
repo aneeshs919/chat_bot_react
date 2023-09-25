@@ -9,21 +9,7 @@ import type {
 import ChatCard from './chatCard'
 import send from '@src/assets/send.png'
 
-// const setNoResultObj: MessageType = {
-//   isBot: true,
-//   responses: [
-//     {
-//       sender: 'bot',
-//       message: `Pardon me i didn't understand the message , plz try again`
-//     }
-//   ]
-// }
-
-// interface RenderChatType {
-//   chatObj: MessageType
-//   onCheckChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-// }
-
+// Rendering chat card for both user and bot
 const RenderChat: React.FC<RenderChatType> = ({ chatObj, onCheckChange }) => {
   if (chatObj.isBot) {
     return (
@@ -36,13 +22,13 @@ const RenderChat: React.FC<RenderChatType> = ({ chatObj, onCheckChange }) => {
                 {item.options.map((option, optionIndex) => {
                   if (option.text.toLowerCase().startsWith('-')) {
                     return (
-                      <div key={optionIndex}>
+                      <div key={optionIndex} className='flex gap-2 pr-10 capitalize'>
                         <input
                           type='checkbox'
                           onChange={onCheckChange}
                           value={option.value}
                         />
-                        {option.text}
+                        <div>{option.value}</div>
                       </div>
                     )
                   }

@@ -1,12 +1,12 @@
 import eventImage from '@src/assets/event.jpeg'
-import {MessageType} from '@src/interface'
 
 export const CHAT_DATA = [
   {
     name: 'greeting',
     sender: 'bot',
     triggers: ['hello', 'hi', 'hey'],
-    defaultMessage: 'Hey, I am Bonnie, your assistant for customer events in Palo Alto! I do it all.',
+    defaultMessage:
+      'Hey, I am Bonnie, your assistant for customer events in Palo Alto! I do it all.',
     responses: [
       {
         sender: 'bot',
@@ -49,7 +49,8 @@ export const CHAT_DATA = [
     name: 'tasks',
     sender: 'bot',
     triggers: ['tasks', 'task'],
-    defaultMessage: 'I can help you with a variety of tasks. What would you like to know?',
+    defaultMessage:
+      'I can help you with a variety of tasks. What would you like to know?',
     responses: [
       {
         sender: 'bot',
@@ -62,11 +63,13 @@ export const CHAT_DATA = [
     name: 'restaurant_recommendation',
     sender: 'bot',
     triggers: ['restaurants', 'restaurant'],
-    defaultMessage: 'Certainly! There are several great restaurants in the area. Here are a few. Please let me know if you\'d like more information about any of them.',
+    defaultMessage:
+      "Certainly! There are several great restaurants in the area. Here are a few. Please let me know if you'd like more information about any of them.",
     responses: [
       {
         sender: 'bot',
-        message: 'Certainly! There are several great restaurants in the area. Here are a few. Please let me know if you\'d like more information about any of them.'
+        message:
+          "Certainly! There are several great restaurants in the area. Here are a few. Please let me know if you'd like more information about any of them."
       }
     ]
   },
@@ -74,7 +77,8 @@ export const CHAT_DATA = [
     name: 'restaurant_info',
     sender: 'bot',
     triggers: ['menu', 'cuisine'],
-    defaultMessage: 'Restaurant A is known for its delicious cuisine and cozy ambiance. They offer a variety of dishes, including pasta, seafood, and desserts. Would you like their contact information or menu?',
+    defaultMessage:
+      'Restaurant A is known for its delicious cuisine and cozy ambiance. They offer a variety of dishes, including pasta, seafood, and desserts. Would you like their contact information or menu?',
     responses: [
       {
         sender: 'bot',
@@ -151,11 +155,13 @@ export const CHAT_DATA = [
     name: 'dinner',
     sender: 'bot',
     triggers: ['walking', 'distance'],
-    defaultMessage: 'Approximately how many guests do you want to have at the event?',
+    defaultMessage:
+      'Approximately how many guests do you want to have at the event?',
     responses: [
       {
         sender: 'bot',
-        message: 'Approximately how many guests do you want to have at the event?'
+        message:
+          'Approximately how many guests do you want to have at the event?'
       }
     ]
   },
@@ -175,11 +181,13 @@ export const CHAT_DATA = [
     name: 'dinner',
     sender: 'bot',
     triggers: ['budget', '$', 'more'],
-    defaultMessage: 'Anything else specific you want me to know? If you have a venue that you love or a vision for the event, just let me know.',
+    defaultMessage:
+      'Anything else specific you want me to know? If you have a venue that you love or a vision for the event, just let me know.',
     responses: [
       {
         sender: 'bot',
-        message: 'Anything else specific you want me to know? If you have a venue that you love or a vision for the event, just let me know.'
+        message:
+          'Anything else specific you want me to know? If you have a venue that you love or a vision for the event, just let me know.'
       }
     ]
   },
@@ -248,7 +256,6 @@ export const CHAT_DATA = [
     ]
   }
 ]
-
 
 export const SET_NO_RESULT_OBJECT = {
   isBot: true,

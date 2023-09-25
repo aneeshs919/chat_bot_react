@@ -9,15 +9,21 @@ interface ChatCardType {
 
 const ChatCard: React.FC<ChatCardType> = ({ children, isBot }) => {
   return (
-    <div className={`${isBot ? 'bg-transparent animate-wiggle' : 'bg-[#dfe9eb] px-10'} py-10 flex gap-4 items-center`}>
+    <div
+      className={`${
+        isBot ? 'bg-transparent animate-wiggle' : 'bg-[#dfe9eb] px-10'
+      } py-10 flex gap-4 items-start lg:items-center`}
+    >
       {isBot ? (
         <div className='rounded-full w-20 h-20 p-3 bg-slate-400 flex justify-center items-center'>
           <img src={bzLogo} alt='logo' />
         </div>
       ) : (
-        <div className='rounded-full w-20 h-20 p-3 bg-[#ced8da] flex justify-center items-center'><img src={user} alt='default_user' /></div>
+        <div className='rounded-full w-20 h-20 p-3 bg-[#ced8da] flex justify-center items-center'>
+          <img src={user} alt='default_user' />
+        </div>
       )}
-      <div>{children}</div>
+      <div className='w-9/12 lg:w-11/12'>{children}</div>
     </div>
   )
 }
