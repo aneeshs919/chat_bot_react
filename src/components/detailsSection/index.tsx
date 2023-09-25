@@ -66,7 +66,7 @@ const DetailsSection: React.FC<HotelDetailsProps> = ({ data }) => {
       </div>
       <div className='border-b-[1px] py-4 flex justify-between gap-2'>
         <Link
-          to={'/virtual_assistant/SF Customer event'}
+          to={'/virtual_assistant/SF_Customer_event'}
           className='py-2 px-4 w-full text-center cursor-pointer hover:opacity-[.5] border-solid border border-gray-600 rounded-md'
         >
           Customize with bonnie{' '}
