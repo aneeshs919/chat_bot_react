@@ -220,7 +220,7 @@ export const CHAT_DATA = [
   {
     name: 'Managing guests',
     sender: 'bot',
-    triggers: ['manage guests', 'guest list', 'RSVP'],
+    triggers: ['manage guests', 'guest list', 'RSVP', 'managing', 'guests'],
     defaultMessage: 'I can assist with managing your guest list and RSVPs.',
     responses: [
       {

@@ -110,13 +110,13 @@ const Chatbot = () => {
   }
 
   // Handle send message to store
-  const findLastCurrentItem = useRef<ChatObj | null>(null)
+  const findLastCurrentItem = useRef<ChatObj | any>(null)
   const handleSendMessage = () => {
     setUserMessage('')
     const textUserMessage = userMessage
     const data = CHAT_DATA.find(item => {
       return item.triggers?.some(subItem => {
-        return textUserMessage.split(' ').includes(subItem)
+        return textUserMessage.split(' ').includes(subItem.toLocaleLowerCase())
       })
     })
     setTimeout(() => {
