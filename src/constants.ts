@@ -1,4 +1,5 @@
 import eventImage from '@src/assets/event.jpeg'
+import {MessageType} from '@src/interface'
 
 export const CHAT_DATA = [
   {
@@ -247,3 +248,14 @@ export const CHAT_DATA = [
     ]
   }
 ]
+
+
+export const SET_NO_RESULT_OBJECT = {
+  isBot: true,
+  responses: [
+    {
+      sender: 'bot',
+      message: `Pardon me i didn't understand the message , plz try again`
+    }
+  ]
+}

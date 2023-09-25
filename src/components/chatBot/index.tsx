@@ -1,23 +1,23 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { CHAT_DATA } from '@src/constants'
-import type { MessageType, ResponseItem, ChatObj } from '@src/interface'
+import { CHAT_DATA, SET_NO_RESULT_OBJECT } from '@src/constants'
+import type { MessageType, ResponseItem, ChatObj, RenderChatType } from '@src/interface'
 import ChatCard from './chatCard'
 import send from '@src/assets/send.png'
 
-const setNoResultObj: MessageType = {
-  isBot: true,
-  responses: [
-    {
-      sender: 'bot',
-      message: `Pardon me i didn't understand the message , plz try again`
-    }
-  ]
-}
+// const setNoResultObj: MessageType = {
+//   isBot: true,
+//   responses: [
+//     {
+//       sender: 'bot',
+//       message: `Pardon me i didn't understand the message , plz try again`
+//     }
+//   ]
+// }
 
-interface RenderChatType {
-  chatObj: MessageType
-  onCheckChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-}
+// interface RenderChatType {
+//   chatObj: MessageType
+//   onCheckChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+// }
 
 const RenderChat: React.FC<RenderChatType> = ({ chatObj, onCheckChange }) => {
   if (chatObj.isBot) {
@@ -84,17 +84,18 @@ const RenderChat: React.FC<RenderChatType> = ({ chatObj, onCheckChange }) => {
   )
 }
 
-const setDefaultMessage = (data: ChatObj | null) => {
+
+const setDefaultMessage = (data: {defaultMessage: string}) => {
   const lastBotChat = {
     isBot: true,
     responses: [
       {
         sender: 'bot',
-        message: data.current?.defaultMessage
+        message: data?.defaultMessage
       }
     ]
   }
-  return data.current?.defaultMessage ? lastBotChat : setNoResultObj
+  return data?.defaultMessage ? lastBotChat : SET_NO_RESULT_OBJECT
 }
 
 const Chatbot = () => {
@@ -117,7 +118,7 @@ const Chatbot = () => {
   }
 
   // Handle send message to store
-  const findLastCurrentItem = useRef<ChatObj | null>(null)
+  const findLastCurrentItem = useRef<React.RefObject<HTMLElement>>(null)
   const handleSendMessage = () => {
     setUserMessage('')
     const textUserMessage = userMessage

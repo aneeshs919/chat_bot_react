@@ -6,7 +6,7 @@ export interface MessageType {
 
 export interface ResponseItem {
   sender: string
-  message: string
+  message: string | null
   defaultMessage?: string
   options?: {
     text: string
@@ -48,4 +48,9 @@ export interface HotelDetailsType {
     'garden dining room': boolean
     'Zen meeting': boolean
   }
+}
+
+export interface RenderChatType {
+  chatObj: MessageType
+  onCheckChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
