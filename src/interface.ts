@@ -1,13 +1,14 @@
-export interface MessageType {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export interface  MessageType {
   responses?: ResponseItem[]
   text?: string
   isBot: boolean
+  defaultMessage?: any
 }
 
 export interface ResponseItem {
   sender: string
   message: string | null
-  defaultMessage?: string
   options?: {
     text: string
     value: string
@@ -16,7 +17,7 @@ export interface ResponseItem {
 
 export interface ChatObj {
   name?: string
-  defaultMessage?: string
+  defaultMessage?: any
   sender: string
   triggers: string[]
   responses: ResponseItem[]

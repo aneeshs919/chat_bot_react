@@ -1,6 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { CHAT_DATA, SET_NO_RESULT_OBJECT } from '@src/constants'
-import type { MessageType, ResponseItem, ChatObj, RenderChatType } from '@src/interface'
+import type {
+  MessageType,
+  ResponseItem,
+  ChatObj,
+  RenderChatType
+} from '@src/interface'
 import ChatCard from './chatCard'
 import send from '@src/assets/send.png'
 
@@ -84,14 +89,14 @@ const RenderChat: React.FC<RenderChatType> = ({ chatObj, onCheckChange }) => {
   )
 }
 
-
-const setDefaultMessage = (data: {defaultMessage: string}) => {
-  const lastBotChat = {
+// Setting default message when there is no response from bot
+const setDefaultMessage = (data: { defaultMessage: string | null }) => {
+  const lastBotChat: MessageType = {
     isBot: true,
     responses: [
       {
         sender: 'bot',
-        message: data?.defaultMessage
+        message: data?.defaultMessage || ''
       }
     ]
   }
@@ -100,6 +105,7 @@ const setDefaultMessage = (data: {defaultMessage: string}) => {
 
 const Chatbot = () => {
   const chatBoxRef = useRef<HTMLInputElement>(null)
+  const searchInputRef = useRef<HTMLInputElement>(null)
   const [userMessage, setUserMessage] = useState('')
   const [messages, setMessages] = useState<MessageType[]>([
     {
@@ -109,7 +115,7 @@ const Chatbot = () => {
   ])
 
   useEffect(() => {
-    chatBoxRef.current.scrollIntoView()
+    chatBoxRef.current?.scrollIntoView()
   }, [messages])
 
   // Handle input type
@@ -118,7 +124,7 @@ const Chatbot = () => {
   }
 
   // Handle send message to store
-  const findLastCurrentItem = useRef<React.RefObject<HTMLElement>>(null)
+  const findLastCurrentItem = useRef<ChatObj | null>(null)
   const handleSendMessage = () => {
     setUserMessage('')
     const textUserMessage = userMessage
@@ -129,15 +135,15 @@ const Chatbot = () => {
     })
     setTimeout(() => {
       if (!data?.name) {
-        setMessages([
-          ...messages,
-          { text: textUserMessage, isBot: false },
+        setMessages(prevSelectedValues => [
+          ...prevSelectedValues,
+          { text: textUserMessage, isBot: false, defaultMessage: null },
           setDefaultMessage(findLastCurrentItem.current)
         ])
       } else {
-        setMessages([
-          ...messages,
-          { text: textUserMessage, isBot: false },
+        setMessages(prevSelectedValues => [
+          ...prevSelectedValues,
+          { text: textUserMessage, isBot: false, defaultMessage: null },
           { ...data, isBot: true }
         ])
         findLastCurrentItem.current = data
@@ -157,6 +163,7 @@ const Chatbot = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { value, checked } = event.target
+    searchInputRef.current?.focus()
     if (checked) {
       setUserMessage(prevSelectedValues => {
         const save = [prevSelectedValues, value]
@@ -168,7 +175,7 @@ const Chatbot = () => {
       )
     }
   }
-  console.log('messages', messages)
+
   return (
     <div className='flex justify-end h-[100vh] flex-col pb-16 pt-16'>
       <div className='pr-10 overflow-auto'>
@@ -190,6 +197,7 @@ const Chatbot = () => {
           value={userMessage}
           onChange={handleUserMessageChange}
           onKeyDown={handleEnter}
+          ref={searchInputRef}
         />
         <div className='absolute right-5 top-5' onClick={handleSendMessage}>
           <img src={send} alt='send_icon' width='35' height='35' />
