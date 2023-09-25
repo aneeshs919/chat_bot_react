@@ -62,7 +62,7 @@ export const CHAT_DATA = [
   {
     name: 'restaurant_recommendation',
     sender: 'bot',
-    triggers: ['restaurants', 'restaurant'],
+    triggers: ['restaurants', 'restaurant', 'dinner'],
     defaultMessage:
       "Certainly! There are several great restaurants in the area. Here are a few. Please let me know if you'd like more information about any of them.",
     responses: [
@@ -90,7 +90,7 @@ export const CHAT_DATA = [
   {
     name: 'dinner',
     sender: 'bot',
-    triggers: ['dinner', 'palo', 'downtown'],
+    triggers: ['palo', 'downtown'],
     defaultMessage: 'Great! What are your goals for the event?',
     responses: [
       {
